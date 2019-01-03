@@ -31,13 +31,22 @@ function IndexPage() {
   const stuff = [glisa, glcan]
   return (
     <>
-      {stuff.map(el => (
-        <Node
-          {...el}
-          tooltipVisible={visibleTooltip === el.id}
-          onClick={() => setVisibleTooltip(el.id)}
-        />
-      ))}
+      {stuff.map(el => {
+        const tooltipVisible = visibleTooltip === el.id
+        return (
+          <Node
+            {...el}
+            tooltipVisible={tooltipVisible}
+            onClick={() => {
+              if (tooltipVisible) {
+                setVisibleTooltip(null)
+              } else {
+                setVisibleTooltip(el.id)
+              }
+            }}
+          />
+        )
+      })}
     </>
   )
 }
