@@ -1,11 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
-function Node({ title, shape, content, tooltipVisible, onClick }) {
+function Node({ id, title, shape, content, tooltipVisible, onClick }) {
   return (
     <Container>
-      <Button onClick={onClick}>{title}</Button>
+      <Button round={shape === 'Circle'} onClick={onClick}>
+        {title}
+      </Button>
       {tooltipVisible && (
         <Tooltip>
           <ReactMarkdown source={content} escapeHtml={false} />
@@ -26,6 +28,14 @@ const Button = styled.button`
   background-color: #ededed;
   padding: 2em;
   text-align: center;
+
+  ${p => {
+    if (p.round) {
+      return css`
+        border-radius: 50%;
+      `
+    }
+  }}
 
   &:focus {
     outline-color: red;

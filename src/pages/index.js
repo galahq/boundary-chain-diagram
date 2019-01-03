@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Node from '../components/Node'
 
 const glisa = {
-  id: 1,
+  id: 'glisa',
   title: 'GLISA',
   shape: 'Rectangle',
   content: `
@@ -13,9 +13,9 @@ historical records and global climate models.
 }
 
 const glcan = {
-  id: 2,
+  id: 'glcan',
   title: 'GLCAN',
-  shape: 'Rectangle',
+  shape: 'Circle',
   content: `<iframe width="560" height="315" src="https://www.youtube.com/embed/n3OfxQKInq4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 GLCAN recognized that cities needed information on expected
