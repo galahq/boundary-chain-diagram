@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown'
 
 function Node({ title, shape, content, tooltipVisible, onClick }) {
   return (
-    <Container onClick={onClick}>
-      {title}
+    <Container>
+      <Button onClick={onClick}>{title}</Button>
       {tooltipVisible && (
         <Tooltip>
           <ReactMarkdown source={content} escapeHtml={false} />
@@ -17,12 +17,20 @@ function Node({ title, shape, content, tooltipVisible, onClick }) {
 
 export default Node
 
-const Container = styled.button`
+const Container = styled.div`
+  position: relative;
+  width: 10em;
+`
+
+const Button = styled.button`
   background-color: #ededed;
   padding: 2em;
-  position: relative;
   text-align: center;
-  width: 10em;
+
+  &:focus {
+    outline-color: red;
+    outline-offset: 3px;
+  }
 `
 
 const Tooltip = styled.div`
