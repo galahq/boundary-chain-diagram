@@ -16,7 +16,8 @@ const glcan = {
   id: 2,
   title: 'GLCAN',
   shape: 'Rectangle',
-  content: `
+  content: `<iframe width="560" height="315" src="https://www.youtube.com/embed/n3OfxQKInq4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 GLCAN recognized that cities needed information on expected
 climates and **socioeconomic vulnerability**. It applied for a
 grant to develop the Vulnerability Assessment template in

@@ -8,7 +8,7 @@ function Node({ title, shape, content, tooltipVisible, onClick }) {
       {title}
       {tooltipVisible && (
         <Tooltip>
-          <ReactMarkdown source={content} />
+          <ReactMarkdown source={content} escapeHtml={false} />
         </Tooltip>
       )}
     </Container>
