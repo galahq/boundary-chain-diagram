@@ -5,7 +5,11 @@ import ReactMarkdown from 'react-markdown'
 function Node({ id, title, shape, content, tooltipVisible, onClick }) {
   return (
     <Container>
-      <Button round={shape === 'Circle'} onClick={onClick}>
+      <Button
+        round={shape === 'Circle'}
+        cloud={shape === 'Cloud'}
+        onClick={onClick}
+      >
         {title}
       </Button>
       {tooltipVisible && (
@@ -25,9 +29,12 @@ const Container = styled.div`
 `
 
 const Button = styled.button`
-  background-color: #ededed;
-  padding: 2em;
+  background-color: #4c5b72;
+  color: #ffffff;
+  padding: 1.8em;
   text-align: center;
+  font: 1em 'Fira Sans', sans-serif;
+  border-radius: 10%;
 
   ${p => {
     if (p.round) {
@@ -37,9 +44,21 @@ const Button = styled.button`
     }
   }}
 
+  ${p => {
+    if (p.square) {
+      return css`
+        border-radius: 0%;
+      `
+    }
+  }}
+
   &:focus {
-    outline-color: red;
-    outline-offset: 3px;
+    outline-color: #b5c0c2;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background-color: #7c8da8;
   }
 `
 
@@ -47,10 +66,15 @@ const Tooltip = styled.div`
   position: absolute;
   top: calc(100% - 1em);
   left: 50%;
-  background-color: darkgrey;
-  width: 20em;
+  background-color: #edf0f0;
+  min-width: 20em;
+  font: 0.9em 'Fira Sans', sans-serif;
+  z-index: 10;
+  border: 1px solid #99a8ab;
+  padding: 0.8em 0.8em 0em 0.8em;
+  margin-bottom: 0em;
 
   strong {
-    color: darkblue;
+    color: #534838;
   }
 `
