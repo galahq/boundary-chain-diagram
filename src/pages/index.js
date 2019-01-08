@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 import Node from '../components/Node'
+
+const data = {
+  id: 'data',
+  title: 'Data',
+  shape: 'Square',
+  content: ``,
+}
 
 const glisa = {
   id: 'glisa',
   title: 'GLISA',
   shape: 'Square',
+  image: 'glisa.png',
   content: `
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 **Great Lakes Integrated Sciences and Assessments** *(GLISA)* climatologists extract climate information from
 historical records and global climate models.
 `,
@@ -37,7 +45,7 @@ const hrwc = {
 
 const headwaters = {
   id: 'headwaters',
-  title: 'Headwaters Economics',
+  title: 'Headwaters',
   shape: 'Rectangle',
   content: `
 **Headwaters Economics** extracts socioeconomic data from the census and incorporates it into the template.
@@ -67,11 +75,11 @@ Jeff Meek, Sustainability Planner for the **City of Indianapolis**, draws on pro
 function IndexPage() {
   const [visibleTooltip, setVisibleTooltip] = useState(null)
 
-  const stuff = [glisa, glcan, hrwc, headwaters, evanston, indianapolis]
+  const stuff = [data, glisa, glcan, hrwc, headwaters, evanston, indianapolis]
   return (
-    <>
+    <Grid>
       {stuff.map(el => {
-        const tooltipVisible = visibleTooltip === el.id
+        const tooltipVisible = visibleTooltip === el.id && el.content !== ''
         return (
           <Node
             {...el}
@@ -86,8 +94,25 @@ function IndexPage() {
           />
         )
       })}
-    </>
+    </Grid>
   )
 }
 
 export default IndexPage
+
+const Grid = styled.div`
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas:
+    '. . . . . . . . .'
+    '. . . . hrwc . . . evanston'
+    'data . glisa . . . glcan . .'
+    '. . . . headwaters . . . indianapolis'
+    '. . . . . . . . .';
+
+  @media (max-width: 500px) {
+    grid-template-areas:
+      '.    base .'
+      'hrwc .    indianapolis';
+  }
+`

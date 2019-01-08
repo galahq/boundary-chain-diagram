@@ -2,10 +2,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
-function Node({ id, title, shape, content, tooltipVisible, onClick }) {
+function Node({ id, image, title, shape, content, tooltipVisible, onClick }) {
   return (
-    <Container>
+    <Container id={id}>
       <Button
+        shape={shape}
         round={shape === 'Circle'}
         cloud={shape === 'Cloud'}
         onClick={onClick}
@@ -14,6 +15,7 @@ function Node({ id, title, shape, content, tooltipVisible, onClick }) {
       </Button>
       {tooltipVisible && (
         <Tooltip>
+          {image && <Image src={require(`../images/${image}`)} />}
           <ReactMarkdown source={content} escapeHtml={false} />
         </Tooltip>
       )}
@@ -25,7 +27,8 @@ export default Node
 
 const Container = styled.div`
   position: relative;
-  width: 10em;
+  grid-area: ${p => p.id};
+  align-self: stretch;
 `
 
 const Button = styled.button`
@@ -37,10 +40,11 @@ const Button = styled.button`
   border-radius: 10%;
 
   ${p => {
-    if (p.round) {
+    if (p.shape === 'Circle') {
       return css`
         border-radius: 50%;
       `
+    } else if (p.shape === 'Cloud') {
     }
   }}
 
@@ -60,6 +64,10 @@ const Button = styled.button`
   &:hover {
     background-color: #7c8da8;
   }
+`
+
+const Image = styled.img`
+  max-width: 10em;
 `
 
 const Tooltip = styled.div`
