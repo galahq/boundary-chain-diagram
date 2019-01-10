@@ -1,15 +1,16 @@
-import React, { forwardRef, useState, useEffect } from 'react'
+import React, { forwardRef, useState, useRef, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
 function Node(
   { id, image, title, shape, content, tooltipVisible, onClick },
-  tooltipRef
+  ref
 ) {
   const itemProps = content !== '' ? { onClick, as: 'button' } : {}
 
   const [shouldFocus, setShouldFocus] = useState(false)
 
+  const tooltipRef = useRef(null)
   useEffect(
     () => {
       tooltipRef.current && tooltipRef.current.focus()
@@ -18,7 +19,7 @@ function Node(
   )
 
   return (
-    <Container id={id}>
+    <Container ref={ref} id={id}>
       <Item shape={shape} {...itemProps}>
         {title}
       </Item>
@@ -43,6 +44,7 @@ const Container = styled.div`
   position: relative;
   grid-area: ${p => p.id};
   align-self: stretch;
+  padding: 0.5em;
 `
 
 const Item = styled.div`
@@ -51,12 +53,13 @@ const Item = styled.div`
   padding: 1.8em;
   text-align: center;
   font: 1em 'Fira Sans', sans-serif;
-  max-width: 10em;
-  min-width: 10em;
+  width: 100%;
+  height: 100%;
   border: none;
-  -webkit-box-shadow: 4px 4px 5px -5px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 4px 5px -5px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 4px 5px -5px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${p => {
     if (p.shape === 'Circle') {
@@ -69,7 +72,7 @@ const Item = styled.div`
       `
     } else if (p.shape === 'Rounded') {
       return css`
-        border-radius: 10%;
+        border-radius: 10px;
       `
     }
   }}

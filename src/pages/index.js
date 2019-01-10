@@ -2,21 +2,22 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import Node from '../components/Node'
+import Arrows, { Arrow } from '../components/Arrows'
 
 function IndexPage() {
   const [visibleTooltip, setVisibleTooltip] = useState(null)
 
   // A way to get and maintain a reference to a real dom node
-  // openTooltipRef.current will be changed as needed by React
-  const openTooltipRef = useRef(null)
+  // openTooltipRefRef.current will be changed as needed by React
+  const openTooltipRefRef = useRef(null)
 
   // Side effect that occurs on render
   useEffect(() => {
     function closeTooltip(e) {
       if (
         visibleTooltip !== null &&
-        openTooltipRef.current &&
-        !openTooltipRef.current.contains(e.target)
+        openTooltipRefRef.current.current &&
+        !openTooltipRefRef.current.current.contains(e.target)
       ) {
         setVisibleTooltip(null)
       }
@@ -30,43 +31,65 @@ function IndexPage() {
     }
   })
 
-  const stuff = [
-    data,
-    glisa,
-    hrwc,
-    headwaters,
-    glcan,
-    evanston,
-    indianapolis,
-    annarbor,
-    cleveland,
-    dearborn,
-  ]
-  return (
-    <Grid>
-      {stuff.map(el => {
-        const tooltipVisible = visibleTooltip === el.id && el.content !== ''
-        return (
-          <Node
-            ref={tooltipVisible ? openTooltipRef : {}}
-            {...el}
-            tooltipVisible={tooltipVisible}
-            onClick={e => {
-              if (tooltipVisible) {
-                setVisibleTooltip(null)
-              } else {
-                setVisibleTooltip(el.id)
-              }
+  const nodes = {
+    data: { node: data, ref: useRef(null) },
+    glisa: { node: glisa, ref: useRef(null) },
+    hrwc: { node: hrwc, ref: useRef(null) },
+    headwaters: { node: headwaters, ref: useRef(null) },
+    glcan: { node: glcan, ref: useRef(null) },
+    evanston: { node: evanston, ref: useRef(null) },
+    indianapolis: { node: indianapolis, ref: useRef(null) },
+    annarbor: { node: annarbor, ref: useRef(null) },
+    cleveland: { node: cleveland, ref: useRef(null) },
+    dearborn: { node: dearborn, ref: useRef(null) },
+  }
 
-              // Prevent the event from bubbling up to the window listener and
-              // immediately reclosing the new tooltip, if we're clicking from
-              // one to another
-              e.stopPropagation()
-            }}
-          />
-        )
-      })}
-    </Grid>
+  return (
+    <>
+      <Grid>
+        {Object.values(nodes).map(({ node, ref }) => {
+          const tooltipVisible =
+            visibleTooltip === node.id && node.content !== ''
+
+          if (tooltipVisible) {
+            openTooltipRefRef.current = ref
+          }
+
+          return (
+            <Node
+              ref={ref}
+              {...node}
+              tooltipVisible={tooltipVisible}
+              onClick={e => {
+                if (tooltipVisible) {
+                  setVisibleTooltip(null)
+                } else {
+                  setVisibleTooltip(node.id)
+                }
+
+                // Prevent the event from bubbling up to the window listener and
+                // immediately reclosing the new tooltip, if we're clicking from
+                // one to another
+                e.stopPropagation()
+              }}
+            />
+          )
+        })}
+      </Grid>
+
+      <Arrows>
+        <Arrow from={nodes.data.ref} to={nodes.glisa.ref} />
+        <Arrow from={nodes.glisa.ref} to={nodes.hrwc.ref} />
+        <Arrow from={nodes.glisa.ref} to={nodes.headwaters.ref} />
+        <Arrow from={nodes.hrwc.ref} to={nodes.glcan.ref} />
+        <Arrow from={nodes.headwaters.ref} to={nodes.glcan.ref} />
+        <Arrow from={nodes.glcan.ref} to={nodes.cleveland.ref} />
+        <Arrow from={nodes.glcan.ref} to={nodes.evanston.ref} />
+        <Arrow from={nodes.glcan.ref} to={nodes.indianapolis.ref} />
+        <Arrow from={nodes.glcan.ref} to={nodes.dearborn.ref} />
+        <Arrow from={nodes.glcan.ref} to={nodes.annarbor.ref} />
+      </Arrows>
+    </>
   )
 }
 
@@ -168,19 +191,25 @@ const dearborn = {
 
 const Grid = styled.div`
   display: grid;
-  grid-gap: 1em;
+  grid-gap: 1em 4em;
   grid-template-areas:
-    '. . . . . . . . cleveland'
-    '. . . . hrwc . . . evanston'
-    'data . glisa . . . glcan . dearborn'
-    '. . . . headwaters . . . indianapolis'
-    '. . . . . . . . annarbor';
+    '.   .      .          .     cleveland'
+    '.   .      hrwc       .     evanston'
+    'data glisa .          glcan dearborn'
+    '.   .      headwaters .     indianapolis'
+    '.   .      .          .     annarbor';
 
-  ${'' /* @media (max-width: 500px) {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+  @media (max-width: 500px) {
     grid-template-areas:
-      '.    base .'
-      'hrwc .    indianapolis';
-  } */}
+      '.          .          data      .             .'
+      '.          .          glisa     .             .'
+      '.          hrwc       .         headwaters    .'
+      '.          .          glcan     .             .'
+      'cleveland  evanston   dearborn  indianapolis  annarbor';
+  }
 `
 
 const Backdrop = styled.div`
