@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import Node from '../components/Node'
-import Arrows, { Arrow } from '../components/Arrows'
+import Node from '../components/node'
+import Arrows, { Arrow } from '../components/arrows'
 
 function IndexPage() {
   const [visibleTooltip, setVisibleTooltip] = useState(null)
