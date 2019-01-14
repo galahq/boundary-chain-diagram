@@ -103,7 +103,7 @@ const Container = styled.div`
 const Item = styled.div`
   background-color: #99a8ab;
   color: #ffffff;
-  padding: 1.2em;
+  ${'' /* padding: 1.2em; */}
   text-align: center;
   font: .9em 'Fira Sans', sans-serif;
   width: 100%;
