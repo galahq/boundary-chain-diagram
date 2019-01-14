@@ -37,6 +37,10 @@ function Arrows({ children }) {
 export default Arrows
 
 function Arrow({ from, to }) {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
   const [fromX, setFromX] = useState(0)
   const [fromY, setFromY] = useState(0)
   const [toX, setToX] = useState(0)
@@ -61,7 +65,7 @@ function Arrow({ from, to }) {
 
   return (
     <path
-      stroke="black"
+      stroke="#99A8AB"
       fill="none"
       d={`M ${fromX},${fromY} L ${toX},${toY}`}
     />

@@ -117,12 +117,13 @@ const glcan = {
   id: 'glcan',
   title: 'GLCAN',
   shape: 'Rounded',
-  content: `<iframe width="560" height="315" src="https://www.youtube.com/embed/n3OfxQKInq4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  content: `
 The **Great Lakes Climate Action Network** *(GLCAN)* recognized that cities needed information on expected
 climates and socioeconomic vulnerability. It applied for a
 grant to develop the Vulnerability Assessment template in
 2017.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iAABTk2zLIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 

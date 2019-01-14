@@ -1,6 +1,14 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react'
+import React, {
+  forwardRef,
+  useState,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+} from 'react'
 import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
+import Popper from 'popper.js'
+import { Img } from 'the-platform'
 
 function Node(
   { id, image, title, shape, content, tooltipVisible, onClick },
@@ -10,28 +18,73 @@ function Node(
 
   const [shouldFocus, setShouldFocus] = useState(false)
 
+  const itemRef = useRef(null)
   const tooltipRef = useRef(null)
+
   useEffect(
     () => {
       tooltipRef.current && tooltipRef.current.focus()
     },
-    [tooltipVisible]
+    [tooltipVisible, tooltipRef.current]
   )
+
+  const popperRef = useRef(null)
+  useLayoutEffect(
+    () => {
+      if (tooltipVisible) {
+        popperRef.current = new Popper(itemRef.current, tooltipRef.current, {
+          modifiers: {
+            flip: {
+              behavior: ['left', 'bottom', 'top', 'right'],
+            },
+            offset: {
+              offset: '10, 10',
+            },
+            preventOverflow: {
+              boundariesElement: 'viewport',
+            },
+          },
+        })
+      }
+
+      return () => {
+        popperRef.current = null
+      }
+    },
+    [tooltipVisible, itemRef.current, tooltipRef.current]
+  )
+
+  const imageRef = useRef(null)
+  useEffect(() => {
+    function updatePopper() {
+      popperRef.current && popperRef.current.scheduleUpdate()
+    }
+
+    imageRef.current && imageRef.current.addEventListener('load', updatePopper)
+
+    return () => {
+      imageRef.current &&
+        imageRef.current.removeEventListener('load', updatePopper)
+    }
+  })
 
   return (
     <Container ref={ref} id={id}>
-      <Item shape={shape} {...itemProps}>
+      <Item ref={itemRef} shape={shape} {...itemProps}>
         {title}
       </Item>
+
       {tooltipVisible && (
         <>
           <Tooltip ref={tooltipRef} tabIndex="0">
-            {image && <Image src={require(`../images/${image}`)} />}
+            {image && (
+              <Image ref={imageRef} src={require(`../images/${image}`)} />
+            )}
             <ReactMarkdown source={content} escapeHtml={false} />
+            <VisuallyHidden>
+              <button onClick={onClick}>Close</button>
+            </VisuallyHidden>
           </Tooltip>
-          <VisuallyHidden>
-            <button onClick={onClick}>Close</button>
-          </VisuallyHidden>
         </>
       )}
     </Container>
@@ -101,9 +154,6 @@ const Image = styled.img`
 `
 
 const Tooltip = styled.div`
-  position: absolute;
-  top: calc(100% - 1em);
-  left: 50%;
   background-color: #edf0f0;
   min-width: 20em;
   font: 0.9em 'Fira Sans', sans-serif;
@@ -111,14 +161,11 @@ const Tooltip = styled.div`
   border: 1px solid #99a8ab;
   padding: 0.8em 0.8em 0em 0.8em;
   margin-bottom: 0em;
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2),
+    0 18px 46px 6px rgba(16, 22, 26, 0.2);
 
   strong {
     color: #534838;
-  }
-
-  &:focus {
-    outline: 2px solid #b5c0c2;
-    outline-offset: 2px;
   }
 `
 
