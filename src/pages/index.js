@@ -46,6 +46,7 @@ function IndexPage() {
 
   return (
     <>
+      <h3>The Boundary Chain</h3>
       <Grid>
         {Object.values(nodes).map(({ node, ref }) => {
           const tooltipVisible =
@@ -204,12 +205,15 @@ const Grid = styled.div`
   grid-template-rows: repeat(5, 1fr);
 
   @media (max-width: 500px) {
+    grid-gap: 1.2em 1em;
     grid-template-areas:
-      '.          .          data      .             .'
-      '.          .          glisa     .             .'
-      '.          hrwc       .         headwaters    .'
-      '.          .          glcan     .             .'
-      'cleveland  evanston   dearborn  indianapolis  annarbor';
+      '.          data      .           '
+      '.          glisa     .           '
+      'hrwc       .         headwaters  '
+      '.          glcan     .           '
+      'evanston   .         indianapolis'
+      '.          dearborn  .           '
+      'cleveland  .         annarbor    '   ;
   }
 `
 

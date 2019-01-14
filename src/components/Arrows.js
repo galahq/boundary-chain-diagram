@@ -53,13 +53,20 @@ function Arrow({ from, to }) {
       if (from.current == null || to.current == null) return
 
       const fromRect = from.current.getBoundingClientRect()
-      setFromX(fromRect.right)
-      setFromY((fromRect.top + fromRect.bottom) / 2)
-
       const toRect = to.current.getBoundingClientRect()
-      setToX(toRect.left)
-      setToY((toRect.top + toRect.bottom) / 2)
-    },
+
+      if (windowSize.width > 500) {
+        setFromX(fromRect.right)
+        setFromY((fromRect.top + fromRect.bottom) / 2)
+        setToX(toRect.left)
+        setToY((toRect.top + toRect.bottom) / 2)
+
+      } else {
+        setFromX((fromRect.left + fromRect.right) / 2)
+        setFromY(fromRect.bottom)
+        setToX((toRect.left + toRect.right) / 2)
+        setToY(toRect.top)
+    }},
     [from.current, to.current, windowSize]
   )
 
