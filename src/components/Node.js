@@ -8,7 +8,7 @@ import React, {
 import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Popper from 'popper.js'
-import { Img } from 'the-platform'
+// import { Img } from 'the-platform'
 
 function Node(
   { id, image, title, shape, content, tooltipVisible, onClick },
@@ -103,7 +103,7 @@ const Container = styled.div`
 const Item = styled.div`
   background-color: #99a8ab;
   color: #ffffff;
-  ${'' /* padding: 1.2em; */}
+  padding: 1.2em;
   text-align: center;
   font: .9em 'Fira Sans', sans-serif;
   width: 100%;
@@ -151,6 +151,10 @@ const Item = styled.div`
 
 const Image = styled.img`
   max-width: 10em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #99a8ab;
 `
 
 const Tooltip = styled.div`
@@ -159,7 +163,7 @@ const Tooltip = styled.div`
   font: 0.9em 'Fira Sans', sans-serif;
   z-index: 10;
   border: 1px solid #99a8ab;
-  padding: 0.8em 0.8em 0em 0.8em;
+  padding: 0.8em .8em 0em 0.8em;
   margin-bottom: 0em;
   box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2),
     0 18px 46px 6px rgba(16, 22, 26, 0.2);

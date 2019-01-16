@@ -124,7 +124,6 @@ climates and socioeconomic vulnerability. It applied for a
 grant to develop the Vulnerability Assessment template in
 2017.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iAABTk2zLIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -135,6 +134,8 @@ const hrwc = {
   image: 'hrwc.png',
   content: `
 *Rebecca Esselman* with **Huron River Watershed Council** *(HRCW)* worked with Great Lakes cities to develop the Vulnerability Assessment template and incorporate GLISA’s climate information.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EUjwSRtQo6I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -155,6 +156,8 @@ const evanston = {
   content: `
 
 Kumar Jensen, Sustainability Coordinator for the **City of Evanston**, started a Climate Action and Resilience Group of community members. The group used the template to identify the city’s vulnerable physical and natural infrastructure.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Nvitv--PEeA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -167,6 +170,7 @@ const indianapolis = {
 
 Jeff Meek, Sustainability Planner for the **City of Indianapolis**, draws on projections in the template to argue for including an adaptation strategy in the city’s Sustainability Plan, and to make decisions that improve the city’s resilience.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QSTQBkLQwSg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -217,11 +221,6 @@ const Grid = styled.div`
   }
 `
 
-const Backdrop = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+const MainHeader = styled.h3`
+  color: red;
 `
