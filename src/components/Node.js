@@ -97,13 +97,12 @@ const Container = styled.div`
   position: relative;
   grid-area: ${p => p.id};
   align-self: stretch;
-  padding: 0.5em;
 `
 
 const Item = styled.div`
   background-color: #99a8ab;
   color: #ffffff;
-  padding: 1.2em;
+  padding: 1.2rem;
   text-align: center;
   font: .9em 'Fira Sans', sans-serif;
   width: 100%;
@@ -170,6 +169,10 @@ const Tooltip = styled.div`
 
   strong {
     color: #534838;
+  }
+
+  iframe {
+    max-width: 100%;
   }
 `
 

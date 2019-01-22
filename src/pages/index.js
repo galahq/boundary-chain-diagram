@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import Node from '../components/node'
 import Arrows, { Arrow } from '../components/arrows'
+
+const GlobalStyles = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+`
 
 function IndexPage() {
   const [visibleTooltip, setVisibleTooltip] = useState(null)
@@ -90,6 +96,8 @@ function IndexPage() {
         <Arrow from={nodes.glcan.ref} to={nodes.dearborn.ref} />
         <Arrow from={nodes.glcan.ref} to={nodes.annarbor.ref} />
       </Arrows>
+
+      <GlobalStyles />
     </>
   )
 }
