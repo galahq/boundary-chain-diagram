@@ -171,7 +171,7 @@ const headwaters = {
   shape: 'Rectangle',
   image: 'headwaters.png',
   content: `
-**Headwaters Economics** extracted socioeconomic data from the census and incorporates it into the template.
+**Headwaters Economics** extracted socioeconomic data from the census and incorporated it into the template.
 `,
 }
 const evanston = {
@@ -181,7 +181,7 @@ const evanston = {
   image: 'evanston.png',
   content: `
 
-Kumar Jensen, Sustainability Coordinator for the **City of Evanston**, helped start a Climate Action and Resilience Plan (CARP) made up of 17 community members. The group used the template to identify the city’s vulnerable physical and natural infrastructure.
+Kumar Jensen, Sustainability Coordinator for the **City of Evanston**, helped start a Climate Action and Resilience Plan (CARP) working group, made up of 17 community members. The group used the template to identify the city’s vulnerable physical and natural infrastructure.
 
 <iframe src="https://www.youtube.com/embed/SDfwE914nrY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
