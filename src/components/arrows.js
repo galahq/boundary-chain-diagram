@@ -7,6 +7,7 @@ const Container = styled.svg`
   top: 0;
   width: 100%;
   height: 100%;
+  overflow: visible !important;
   z-index: -1;
 `
 function Arrows({ children }) {
@@ -56,17 +57,17 @@ function Arrow({ from, to }) {
       const toRect = to.current.getBoundingClientRect()
 
       if (windowSize.width > 500) {
-        setFromX(fromRect.right)
-        setFromY((fromRect.top + fromRect.bottom) / 2)
-        setToX(toRect.left)
-        setToY((toRect.top + toRect.bottom) / 2)
-
+        setFromX(fromRect.right + window.pageXOffset)
+        setFromY((fromRect.top + fromRect.bottom) / 2 + window.pageYOffset)
+        setToX(toRect.left + window.pageXOffset)
+        setToY((toRect.top + toRect.bottom) / 2 + window.pageYOffset)
       } else {
-        setFromX((fromRect.left + fromRect.right) / 2)
-        setFromY(fromRect.bottom)
-        setToX((toRect.left + toRect.right) / 2)
-        setToY(toRect.top)
-    }},
+        setFromX((fromRect.left + fromRect.right) / 2 + window.pageXOffset)
+        setFromY(fromRect.bottom + window.pageYOffset)
+        setToX((toRect.left + toRect.right) / 2 + window.pageXOffset)
+        setToY(toRect.top + window.pageYOffset)
+      }
+    },
     [from.current, to.current, windowSize]
   )
 
