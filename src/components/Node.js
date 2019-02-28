@@ -1,23 +1,13 @@
-import React, {
-  forwardRef,
-  useState,
-  useRef,
-  useEffect,
-  useLayoutEffect,
-} from 'react'
+import React, { forwardRef, useRef, useEffect, useLayoutEffect } from 'react'
 import styled, { css } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import Popper from 'popper.js'
-// import { Img } from 'the-platform'
 
 function Node(
   { id, image, title, shape, content, tooltipVisible, onClick },
   ref
 ) {
   const itemProps = content !== '' ? { onClick, as: 'button' } : {}
-
-  const [shouldFocus, setShouldFocus] = useState(false)
-
   const itemRef = useRef(null)
   const tooltipRef = useRef(null)
 
@@ -77,6 +67,9 @@ function Node(
       {tooltipVisible && (
         <>
           <Tooltip ref={tooltipRef} tabIndex="0">
+            <VisuallyHiddenOnDesktop>
+              <button onClick={onClick}>Close</button>
+            </VisuallyHiddenOnDesktop>
             {image && (
               <Image ref={imageRef} src={require(`../images/${image}`)} />
             )}
@@ -104,7 +97,7 @@ const Item = styled.div`
   color: #ffffff;
   padding: 1.2rem;
   text-align: center;
-  font: .9em 'Fira Sans', sans-serif;
+  font: 0.8em 'Fira Sans', sans-serif;
   width: 100%;
   height: 100%;
   border: none;
@@ -149,7 +142,7 @@ const Item = styled.div`
 `
 
 const Image = styled.img`
-  max-width: 10em;
+  max-width: 9em;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -159,10 +152,10 @@ const Image = styled.img`
 const Tooltip = styled.div`
   background-color: #edf0f0;
   min-width: 20em;
-  font: 0.9em 'Fira Sans', sans-serif;
+  font: 0.8em 'Fira Sans', sans-serif;
   z-index: 10;
   border: 1px solid #99a8ab;
-  padding: 0.8em .8em 0em 0.8em;
+  padding: 0.8em 0.8em 0em 0.8em;
   margin-bottom: 0em;
   box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2),
     0 18px 46px 6px rgba(16, 22, 26, 0.2);
@@ -182,5 +175,11 @@ const VisuallyHidden = styled.div`
   &:not(:focus-within) {
     left: -9999999px;
     top: -999999px;
+  }
+`
+
+const VisuallyHiddenOnDesktop = styled(VisuallyHidden)`
+  @media (max-width: 500px) {
+    position: static;
   }
 `

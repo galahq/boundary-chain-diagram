@@ -52,7 +52,25 @@ function IndexPage() {
 
   return (
     <>
-      <h3>The Boundary Chain</h3>
+      <Heading>Illustrated Boundary Chain Model</Heading>
+      <Description>
+        Boundary organizations coproduce climate information by working in the
+        space between the organizations that produce the information (for
+        example, universities) and the organizations that use it to make
+        decisions (for example, city managers). In a boundary chain model, the
+        organizations that use information are connected, not just to producers,
+        but also to each other, like links in a chain. This configuration
+        enables organizations to collaborate to exchange information and
+        customize it to fit their different needs. The diagram below uses the
+        case of the Great Lakes Climate Adaptation Network (GLCAN) to illustrate
+        how organizations collaborated to develop a template to assess climate
+        vulnerability in Great Lakes cities.
+      </Description>
+      <Instructions>
+        Click on each link in the chain to learn more about that organizations
+        role in helping cities adapt to climate change.
+      </Instructions>
+
       <Grid>
         {Object.values(nodes).map(({ node, ref }) => {
           const tooltipVisible =
@@ -106,9 +124,9 @@ export default IndexPage
 
 const data = {
   id: 'data',
-  title: 'Data',
+  title: 'Climate Data',
   shape: 'Rectangle',
-  content: ``,
+  content: `Historical observations and future projections.`,
 }
 
 const glisa = {
@@ -117,7 +135,7 @@ const glisa = {
   shape: 'Rounded',
   image: 'glisa.png',
   content: `
-**Great Lakes Integrated Sciences and Assessments** *(GLISA)* climatologists extract climate information from
+**Great Lakes Integrated Sciences and Assessments** *(GLISA)* climatologists extracted climate information from
 historical records and global climate models.
 `,
 }
@@ -127,10 +145,8 @@ const glcan = {
   title: 'GLCAN',
   shape: 'Rounded',
   content: `
-The **Great Lakes Climate Action Network** *(GLCAN)* recognized that cities needed information on expected
-climates and socioeconomic vulnerability. It applied for a
-grant to develop the Vulnerability Assessment template in
-2017.
+The **Great Lakes Climate Adaptation Network** *(GLCAN)* recognized that cities needed information on expected climate impacts and socioeconomic vulnerability. It applied for a
+grant to develop the Vulnerability Assessment template in 2017.
 
 `,
 }
@@ -141,9 +157,9 @@ const hrwc = {
   shape: 'Rectangle',
   image: 'hrwc.png',
   content: `
-*Rebecca Esselman* with **Huron River Watershed Council** *(HRCW)* worked with Great Lakes cities to develop the Vulnerability Assessment template and incorporate GLISA’s climate information.
+*Rebecca Esselman* with the **Huron River Watershed Council** *(HRWC)* worked with Great Lakes cities to develop the Vulnerability Assessment template and incorporate GLISA’s climate information.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EUjwSRtQo6I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/EUjwSRtQo6I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -153,7 +169,7 @@ const headwaters = {
   shape: 'Rectangle',
   image: 'headwaters.png',
   content: `
-**Headwaters Economics** extracts socioeconomic data from the census and incorporates it into the template.
+**Headwaters Economics** extracted socioeconomic data from the census and incorporates it into the template.
 `,
 }
 const evanston = {
@@ -163,9 +179,9 @@ const evanston = {
   image: 'evanston.png',
   content: `
 
-Kumar Jensen, Sustainability Coordinator for the **City of Evanston**, started a Climate Action and Resilience Group of community members. The group used the template to identify the city’s vulnerable physical and natural infrastructure.
+Kumar Jensen, Sustainability Coordinator for the **City of Evanston**, helped start a Climate Action and Resilience Plan (CARP) made up of 17 community members. The group used the template to identify the city’s vulnerable physical and natural infrastructure.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Nvitv--PEeA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/SDfwE914nrY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -176,9 +192,9 @@ const indianapolis = {
   image: 'indianapolis.png',
   content: `
 
-Jeff Meek, Sustainability Planner for the **City of Indianapolis**, draws on projections in the template to argue for including an adaptation strategy in the city’s Sustainability Plan, and to make decisions that improve the city’s resilience.
+Jeff Meek, Sustainability Planner for **Indianapolis**, drew on projections in the template to argue for including an adaptation strategy in the city’s Sustainability Plan, and to make decisions that improve the city’s resilience.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QSTQBkLQwSg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/mDNOO_-0EP0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `,
 }
 
@@ -205,7 +221,7 @@ const dearborn = {
 
 const Grid = styled.div`
   display: grid;
-  grid-gap: 1em 4em;
+  grid-gap: 0.8em 3.8em;
   grid-template-areas:
     '.   .      .          .     cleveland'
     '.   .      hrwc       .     evanston'
@@ -215,9 +231,13 @@ const Grid = styled.div`
 
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  max-width: 1000px;
+  margin: auto;
 
   @media (max-width: 500px) {
     grid-gap: 1.2em 1em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     grid-template-areas:
       '.          data      .           '
       '.          glisa     .           '
@@ -225,10 +245,28 @@ const Grid = styled.div`
       '.          glcan     .           '
       'evanston   .         indianapolis'
       '.          dearborn  .           '
-      'cleveland  .         annarbor    '   ;
+      'cleveland  .         annarbor    ';
   }
 `
-
-const MainHeader = styled.h3`
-  color: red;
+const Heading = styled.h3`
+  color: #252728;
+  text-align: center;
+`
+const Description = styled.section`
+  color: #252728;
+  margin-left: 10%;
+  margin-right: 10%;
+  font: 0.8em 'Fira Sans', sans-serif;
+  font-weight: 300;
+  text-align: left;
+`
+const Instructions = styled.section`
+  padding-top: 1em;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 2.5em;
+  color: #99a8ab;
+  font-style: italic;
+  text-align: center;
+  font: 0.8em 'Fira Sans', sans-serif;
 `
