@@ -97,7 +97,7 @@ const Item = styled.div`
   color: #ffffff;
   padding: 1.2rem;
   text-align: center;
-  font: 0.8em 'Fira Sans', sans-serif;
+  font: 0.9em 'Fira Sans', sans-serif;
   width: 100%;
   height: 100%;
   border: none;

@@ -52,24 +52,26 @@ function IndexPage() {
 
   return (
     <Container>
-      <Heading>Illustrated Boundary Chain Model</Heading>
-      <Description>
-        Boundary organizations coproduce climate information by working in the
-        space between the organizations that produce the information (for
-        example, universities) and the organizations that use it to make
-        decisions (for example, city managers). In a boundary chain model, the
-        organizations that use information are connected, not just to producers,
-        but also to each other, like links in a chain. This configuration
-        enables organizations to collaborate to exchange information and
-        customize it to fit their different needs. The diagram below uses the
-        case of the Great Lakes Climate Adaptation Network (GLCAN) to illustrate
-        how organizations collaborated to develop a template to assess climate
-        vulnerability in Great Lakes cities.
-      </Description>
-      <Instructions>
-        Click on each link in the chain to learn more about that organizations
-        role in helping cities adapt to climate change.
-      </Instructions>
+      <Intro>
+        <Heading>Illustrated Boundary Chain Model</Heading>
+        <Description>
+          Boundary organizations coproduce climate information by working in the
+          space between the organizations that produce the information (for
+          example, universities) and the organizations that use it to make
+          decisions (for example, city managers). In a boundary chain model, the
+          organizations that use information are connected, not just to
+          producers, but also to each other, like links in a chain. This
+          configuration enables organizations to collaborate to exchange
+          information and customize it to fit their different needs. The diagram
+          below uses the case of the Great Lakes Climate Adaptation Network
+          (GLCAN) to illustrate how organizations collaborated to develop a
+          template to assess climate vulnerability in Great Lakes cities.
+        </Description>
+        <Instructions>
+          Click on each link in the chain to learn more about that organizations
+          role in helping cities adapt to climate change.
+        </Instructions>
+      </Intro>
 
       <Grid>
         {Object.values(nodes).map(({ node, ref }) => {
@@ -256,27 +258,29 @@ const Grid = styled.div`
       'cleveland  .         annarbor    ';
   }
 `
+const Intro = styled.section`
+  max-width: 760px;
+  margin: 0 auto;
+  font: 'Fira Sans', sans-serif;
+  font-size: 0.9rem;
+`
 const Heading = styled.h3`
   color: #252728;
   text-align: center;
-  font: bold 1.2em apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font: bold 1.2rem apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `
-const Description = styled.section`
+
+const Description = styled.p`
   color: #252728;
-  max-width: 700px;
-  margin: 0 auto;
-  font: 0.9em 'Fira Sans', sans-serif;
   font-weight: 300;
   text-align: left;
 `
-const Instructions = styled.section`
-  padding-top: 1em;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 2.5em;
+const Instructions = styled.p`
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
   color: #99a8ab;
-  font-style: italic;
+  font-style: italic !important;
   text-align: center;
-  font: 0.8em 'Fira Sans', sans-serif;
+  font-size: 0.8rem;
 `
