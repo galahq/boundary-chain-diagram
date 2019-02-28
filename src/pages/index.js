@@ -221,6 +221,10 @@ const dearborn = {
 
 const Container = styled.main`
   margin: 2rem;
+
+  @media (max-width: 500px) {
+    margin: 2rem 0.5rem;
+  }
 `
 
 const Grid = styled.div`
@@ -260,16 +264,16 @@ const Heading = styled.h3`
 `
 const Description = styled.section`
   color: #252728;
-  margin-left: 15%;
-  margin-right: 15%;
+  max-width: 700px;
+  margin: 0 auto;
   font: 0.9em 'Fira Sans', sans-serif;
   font-weight: 300;
   text-align: left;
 `
 const Instructions = styled.section`
   padding-top: 1em;
-  margin-left: 10%;
-  margin-right: 10%;
+  max-width: 700px;
+  margin: 0 auto;
   padding-bottom: 2.5em;
   color: #99a8ab;
   font-style: italic;
