@@ -261,8 +261,6 @@ const Grid = styled.div`
 const Intro = styled.section`
   max-width: 760px;
   margin: 0 auto;
-  font: 'Fira Sans', sans-serif;
-  font-size: 0.9rem;
 `
 const Heading = styled.h3`
   color: #252728;
@@ -275,6 +273,7 @@ const Description = styled.p`
   color: #252728;
   font-weight: 300;
   text-align: left;
+  font-size: 0.9rem 'Fira Sans', sans-serif;
 `
 const Instructions = styled.p`
   padding-top: 1rem;
@@ -282,5 +281,5 @@ const Instructions = styled.p`
   color: #99a8ab;
   font-style: italic !important;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.8rem 'Fira Sans', sans-serif;
 `
