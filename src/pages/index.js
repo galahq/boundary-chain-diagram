@@ -51,7 +51,7 @@ function IndexPage() {
   }
 
   return (
-    <>
+    <Container>
       <Heading>Illustrated Boundary Chain Model</Heading>
       <Description>
         Boundary organizations coproduce climate information by working in the
@@ -116,7 +116,7 @@ function IndexPage() {
       </Arrows>
 
       <GlobalStyles />
-    </>
+    </Container>
   )
 }
 
@@ -218,6 +218,10 @@ const dearborn = {
   shape: 'Circle',
   content: ``,
 }
+
+const Container = styled.main`
+  margin: 2rem;
+`
 
 const Grid = styled.div`
   display: grid;
