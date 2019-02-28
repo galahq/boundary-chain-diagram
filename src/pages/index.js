@@ -251,12 +251,14 @@ const Grid = styled.div`
 const Heading = styled.h3`
   color: #252728;
   text-align: center;
+  font: bold 1.2em apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `
 const Description = styled.section`
   color: #252728;
-  margin-left: 10%;
-  margin-right: 10%;
-  font: 0.8em 'Fira Sans', sans-serif;
+  margin-left: 15%;
+  margin-right: 15%;
+  font: 0.9em 'Fira Sans', sans-serif;
   font-weight: 300;
   text-align: left;
 `
