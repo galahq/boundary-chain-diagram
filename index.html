@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Illustrated Boundary Chain Model – GLCAN</title>
+    <meta
+      name="description"
+      content="An interactive diagram showing how the Great Lakes Climate Adaptation Network and its partners worked as a boundary chain to help Great Lakes cities assess climate vulnerability."
+    />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+    <noscript>
+      <style>
+        .panel[hidden] { display: block; position: static; width: auto; }
+        .panel-close, .instructions { display: none; }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <main class="container">
+      <section class="intro">
+        <h1 class="heading">Illustrated Boundary Chain Model</h1>
+        <p class="description">
+          Boundary organizations coproduce climate information by working in
+          the space between the organizations that produce the information (for
+          example, universities) and the organizations that use it to make
+          decisions (for example, city managers). In a boundary chain model,
+          the organizations that use information are connected, not just to
+          producers, but also to each other, like links in a chain. This
+          configuration enables organizations to collaborate to exchange
+          information and customize it to fit their different needs. The
+          diagram below uses the case of the Great Lakes Climate Adaptation
+          Network (GLCAN) to illustrate how organizations collaborated to
+          develop a template to assess climate vulnerability in Great Lakes
+          cities.
+        </p>
+        <p class="instructions">
+          Select each link in the chain to learn more about that
+          organization’s role in helping cities adapt to climate change.
+        </p>
+      </section>
+
+      <section class="diagram" aria-labelledby="diagram-heading">
+        <h2 id="diagram-heading" class="visually-hidden">Boundary chain diagram</h2>
+        <p class="visually-hidden">
+          Information flows from Climate Data to GLISA. GLISA passes it to both
+          HRWC and Headwaters Economics, which each pass it to GLCAN. GLCAN
+          shares it with the cities of Cleveland, Evanston, Dearborn,
+          Indianapolis, and Ann Arbor.
+        </p>
+
+        <div class="grid-wrapper">
+          <svg class="connectors" aria-hidden="true" focusable="false"></svg>
+
+          <ul class="grid" role="list">
+            <li class="cell" style="grid-area: data">
+              <button type="button" class="node node--rect" id="node-data" aria-expanded="false" aria-controls="panel-data">
+                Climate Data
+              </button>
+              <div class="panel" id="panel-data" role="region" aria-labelledby="panel-data-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-data-title">Climate Data</h3>
+                <p>Historical observations and future projections.</p>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: glisa">
+              <button type="button" class="node node--rounded" id="node-glisa" aria-expanded="false" aria-controls="panel-glisa">
+                GLISA
+              </button>
+              <div class="panel" id="panel-glisa" role="region" aria-labelledby="panel-glisa-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-glisa-title">GLISA</h3>
+                <img class="logo" src="images/glisa.png" width="224" height="96" alt="GLISA logo" />
+                <p>
+                  <strong>Great Lakes Integrated Sciences and Assessments</strong>
+                  <em>(GLISA)</em> climatologists extracted climate information
+                  from historical records and global climate models.
+                </p>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: hrwc">
+              <button type="button" class="node node--rect" id="node-hrwc" aria-expanded="false" aria-controls="panel-hrwc">
+                HRWC
+              </button>
+              <div class="panel" id="panel-hrwc" role="region" aria-labelledby="panel-hrwc-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-hrwc-title">HRWC</h3>
+                <img class="logo" src="images/hrwc.png" width="241" height="126" alt="Huron River Watershed Council logo" />
+                <p>
+                  <em>Rebecca Esselman</em> with the
+                  <strong>Huron River Watershed Council</strong> <em>(HRWC)</em>
+                  worked with Great Lakes cities to develop the Vulnerability
+                  Assessment template and incorporate GLISA’s climate
+                  information.
+                </p>
+                <div class="video">
+                  <iframe
+                    src="https://www.youtube.com/embed/EUjwSRtQo6I"
+                    title="Video: Rebecca Esselman, Huron River Watershed Council"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: headwaters">
+              <button type="button" class="node node--rect" id="node-headwaters" aria-expanded="false" aria-controls="panel-headwaters">
+                Headwaters Economics
+              </button>
+              <div class="panel" id="panel-headwaters" role="region" aria-labelledby="panel-headwaters-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-headwaters-title">Headwaters Economics</h3>
+                <img class="logo" src="images/headwaters.png" width="226" height="192" alt="Headwaters Economics logo" />
+                <p>
+                  <strong>Headwaters Economics</strong> extracted socioeconomic
+                  data from the census and incorporated it into the template.
+                </p>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: glcan">
+              <button type="button" class="node node--rounded" id="node-glcan" aria-expanded="false" aria-controls="panel-glcan">
+                GLCAN
+              </button>
+              <div class="panel" id="panel-glcan" role="region" aria-labelledby="panel-glcan-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-glcan-title">GLCAN</h3>
+                <p>
+                  The <strong>Great Lakes Climate Adaptation Network</strong>
+                  <em>(GLCAN)</em> recognized that cities needed information on
+                  expected climate impacts and socioeconomic vulnerability. It
+                  applied for a grant to develop the Vulnerability Assessment
+                  template in 2017.
+                </p>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: cleveland">
+              <span class="node node--circle node--static" id="node-cleveland">Cleveland</span>
+            </li>
+
+            <li class="cell" style="grid-area: evanston">
+              <button type="button" class="node node--circle" id="node-evanston" aria-expanded="false" aria-controls="panel-evanston">
+                Evanston
+              </button>
+              <div class="panel" id="panel-evanston" role="region" aria-labelledby="panel-evanston-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-evanston-title">Evanston</h3>
+                <img class="logo" src="images/evanston.png" width="197" height="220" alt="City of Evanston logo" />
+                <p>
+                  Kumar Jensen, Sustainability Coordinator for the
+                  <strong>City of Evanston</strong>, helped start a Climate
+                  Action and Resilience Plan (CARP) working group, made up of 17
+                  community members. The group used the template to identify
+                  the city’s vulnerable physical and natural infrastructure.
+                </p>
+                <div class="video">
+                  <iframe
+                    src="https://www.youtube.com/embed/SDfwE914nrY"
+                    title="Video: Kumar Jensen, City of Evanston"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: dearborn">
+              <span class="node node--circle node--static" id="node-dearborn">Dearborn</span>
+            </li>
+
+            <li class="cell" style="grid-area: indianapolis">
+              <button type="button" class="node node--circle" id="node-indianapolis" aria-expanded="false" aria-controls="panel-indianapolis">
+                Indianapolis
+              </button>
+              <div class="panel" id="panel-indianapolis" role="region" aria-labelledby="panel-indianapolis-title" tabindex="-1" hidden>
+                <h3 class="visually-hidden" id="panel-indianapolis-title">Indianapolis</h3>
+                <img class="logo" src="images/indianapolis.png" width="224" height="130" alt="City of Indianapolis logo" />
+                <p>
+                  Jeff Meek, Sustainability Planner for
+                  <strong>Indianapolis</strong>, drew on projections in the
+                  template to argue for including an adaptation strategy in the
+                  city’s Sustainability Plan, and to make decisions that
+                  improve the city’s resilience.
+                </p>
+                <div class="video">
+                  <iframe
+                    src="https://www.youtube.com/embed/mDNOO_-0EP0"
+                    title="Video: Jeff Meek, Indianapolis"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <button type="button" class="panel-close">Close</button>
+              </div>
+            </li>
+
+            <li class="cell" style="grid-area: annarbor">
+              <span class="node node--circle node--static" id="node-annarbor">Ann Arbor</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
